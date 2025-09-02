@@ -28,6 +28,7 @@ df = pd.DataFrame(data=[email],columns=['text'])
 
 
 stemmer = PorterStemmer()
+from nltk.corpus import stopwords
 stop_words = set(stopwords.words('english'))
 
 def preprocess_text(text):
@@ -42,11 +43,11 @@ def preprocess_text(text):
 df['cleaned_text'] = df['text'].apply(preprocess_text)
 
 
-file_path = r'models\model.pkl'
+file_path = 'models/model.pkl'
 with open(file_path, 'rb') as file:
     loaded_model = pickle.load(file)
 
-file_path = r'models\vectorizer.pkl'
+file_path = 'models/vectorizer.pkl'
 with open(file_path, 'rb') as file:
     tfidf = pickle.load(file)
 
